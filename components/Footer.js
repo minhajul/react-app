@@ -1,10 +1,11 @@
-
 import React, { Component } from 'react';
 
 class Footer extends Component{
     render(){
         return(
-            <p>Copyright @ 2017</p>
+            <footer className="footer">
+                <p>Copyright &copy; 2017</p>
+            </footer>
         )
     }
 }
