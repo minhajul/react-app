@@ -4,8 +4,8 @@ import App from './App';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import './index.css';
-
 import { Router, Route } from 'react-router';
+
 import createBrowserHistory from 'history/createBrowserHistory';
 
 const routes = (
@@ -17,7 +17,6 @@ const routes = (
         </div>
     </Router>
 );
-
 
 ReactDOM.render(
     routes,
