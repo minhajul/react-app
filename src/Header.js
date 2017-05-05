@@ -8,13 +8,15 @@ class Header extends Component{
             <div className="header clearfix">
                 <nav>
                     <ul className="nav nav-pills pull-right custom-nav">
-                        <li role="presentation" className="active"><a href="#">Home</a></li>
-                        <li role="presentation"><a href="#">About</a></li>
-                        <li role="presentation"><a href="#">Contact</a></li>
+                        <li role="presentation" className="active"><a href="/">Home</a></li>
+                        <li role="presentation"><a href="/about">About</a></li>
+                        <li role="presentation"><a href="/contact">Contact</a></li>
                     </ul>
                 </nav>
                 <h3 className="text-muted">
-                    <img src={logo} className="App-logo" alt="logo" />
+                    <a href="/">
+                        <img src={logo} className="App-logo" alt="logo" />
+                    </a>
                 </h3>
             </div>
         )
