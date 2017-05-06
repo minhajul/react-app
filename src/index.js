@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Todo from './pages/Todo';
 import './index.css';
 import { Router, Route } from 'react-router';
 
@@ -14,6 +15,7 @@ const routes = (
             <Route exact path="/" component={App}/>
             <Route path="/about" component={About}/>
             <Route path="/contact" component={Contact}/>
+            <Route path="/todo" component={Todo}/>
         </div>
     </Router>
 );

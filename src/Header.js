@@ -12,6 +12,7 @@ class Header extends Component{
                         <li role="presentation" className="active"><a href="/">Home</a></li>
                         <li role="presentation"><a href="/about">About</a></li>
                         <li role="presentation"><a href="/contact">Contact</a></li>
+                        <li role="presentation"><a href="/todo">To Do</a></li>
                     </ul>
                 </nav>
                 <h3 className="text-muted">

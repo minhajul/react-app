@@ -3,24 +3,6 @@ import Header from '../Header';
 import Footer from '../Footer';
 
 class Contact extends Component{
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {value: ''};
-    //
-    //     this.handleChange = this.handleChange.bind(this);
-    //     this.handleSubmit = this.handleSubmit.bind(this);
-    // }
-    //
-    // handleChange(event) {
-    //     this.setState({value: event.target.value});
-    // }
-    //
-    // handleSubmit(event) {
-    //     console.log('A name was submitted: ' + this.state.value);
-    //     event.preventDefault();
-    // }
-
     constructor(props){
         super(props);
         this.state = { name: '', email: '', password: '' };
@@ -50,7 +32,7 @@ class Contact extends Component{
            email : this.state.email,
            password : this.state.password,
         };
-        
+
         console.log(formData);
     }
 
