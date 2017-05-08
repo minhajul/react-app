@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Todo from './pages/Todo';
+import App from './components/partials/App';
+import About from './components/pages/About';
+import Contact from './components/pages/Contact';
+import Todo from './components/pages/Todo';
 import './index.css';
 import { Router, Route } from 'react-router';
 

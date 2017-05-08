@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from "../Header";
-import AboutMe from "../AboutMe";
-import Footer from "../Footer";
+import Header from "../partials/Header";
+import AboutMe from "../partials/AboutMe";
+import Footer from "../partials/Footer";
 
 class About extends Component {
     constructor(props){
