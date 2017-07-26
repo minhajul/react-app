@@ -1,7 +1,7 @@
-
 import React, { Component } from 'react';
 import Header from "../partials/Header";
 import TodoList from "../partials/TodoList";
+import {TodoForm} from "../partials/TodoForm";
 import Footer from "../partials/Footer";
 
 class Todo extends Component {
@@ -9,24 +9,52 @@ class Todo extends Component {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {items: [], text: ''}
+        this.state = {
+            items : [
+                {
+                    id: 1,
+                    name : 'PHP',
+                    isComplete : true
+                },
+                {
+                    id: 2,
+                    name : 'Laravel',
+                    isComplete : false
+                },
+                {
+                    id: 3,
+                    name : 'Javascript',
+                    isComplete : true
+                },
+                {
+                    id: 4,
+                    name : 'Python',
+                    isComplete : false
+                },
+
+            ]
+        }
     }
 
     handleChange(event){
-        this.setState({text: event.target.value});
+        this.setState({
+            list: {
+                name : event.target.value
+            }
+        });
     }
 
     handleSubmit(event){
         event.preventDefault();
         let newItem = {
-            text: this.state.text,
-            id: Date.now()
+            name : this.state.list,
+            id : Date.now()
         };
 
-        this.setState( ( prevState ) => ({
-            items: prevState.items.concat(newItem),
-            text: ''
-        }))
+        this.setState({
+            items : this.state.items.concat(newItem),
+            text : ''
+        })
     }
 
     render() {
@@ -35,15 +63,12 @@ class Todo extends Component {
                 <Header/>
                 <div className="col-md-12">
                     <div className="todo-list">
-                        <h3>TODO</h3>
+                        <h3>TODO LIST</h3>
+
                         <TodoList items={this.state.items}/>
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="form-group">
-                                <input className="form-control" onChange={this.handleChange} value={this.state.text} required/>
-                                <br/>
-                                <button className="btn btn-primary">{'Add'}</button>
-                            </div>
-                        </form>
+
+                        <TodoForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} list={ this.state.text }/>
+
                     </div>
                 </div>
                 <div className="col-md-12">

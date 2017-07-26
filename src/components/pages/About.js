@@ -7,14 +7,31 @@ class About extends Component {
     constructor(props){
         super(props);
         this.state = {
-            myInfo: {}
+            myProfile: {}
         };
     }
 
+    async fetchGithubProfile(){
+        const response = await fetch('https://api.github.com/users/minhajCSE');
+        return await response.json();
+    }
     componentDidMount(){
-        fetch('https://api.github.com/users/minhajCSE')
-            .then(response => response.json())
-            .then(myInfo => this.setState({myInfo}));
+        let profile = JSON.parse(localStorage.getItem('profile'));
+        if (profile !== null){
+            this.setState({
+                myProfile : profile
+            })
+        }else {
+            this.fetchGithubProfile()
+                .then(myProfile => {
+                    this.setState({
+                        myProfile: myProfile
+                    });
+                    localStorage.setItem('profile', JSON.stringify(myProfile));
+                }).catch(error => {
+                    console.log(error);
+                });
+        }
     }
 
     render() {
@@ -22,7 +39,7 @@ class About extends Component {
             <div className="container">
                 <Header/>
                 <div className="col-md-12">
-                   <AboutMe aboutMe={this.state.myInfo} />
+                   <AboutMe aboutMe={this.state.myProfile} />
                 </div>
                 <div className="col-md-12">
                     <Footer/>

@@ -90,6 +90,21 @@ small {
     margin-top: 28px;
 }
 
+.todo-list{
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    text-align: left;
+}
+
+.todo-list li{
+    padding: 3px;
+}
+
+.todo-list li > .item{
+    margin-right: 5px;
+}
+
 @media screen and (min-width: 768px) {
     .header,
     .marketing,
