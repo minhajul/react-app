@@ -10,7 +10,6 @@ class About extends Component {
             myProfile: {}
         };
     }
-
     async fetchGithubProfile(){
         const response = await fetch('https://api.github.com/users/minhajCSE');
         return await response.json();
@@ -50,3 +49,5 @@ class About extends Component {
 }
 
 export default About;
+
+

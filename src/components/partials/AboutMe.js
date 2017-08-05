@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AboutMe extends Component{
-
     render(){
         let created_at = this.props.aboutMe.created_at,
             year = (new Date(created_at)).getFullYear(),
@@ -48,3 +48,9 @@ class AboutMe extends Component{
 }
 
 export default AboutMe;
+
+
+
+AboutMe.propTypes = {
+    aboutMe : PropTypes.object.isRequired
+};
