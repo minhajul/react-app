@@ -47,10 +47,9 @@ class AboutMe extends Component{
     }
 }
 
-export default AboutMe;
-
-
 
 AboutMe.propTypes = {
     aboutMe : PropTypes.object.isRequired
 };
+
+export default AboutMe;
