@@ -5,8 +5,12 @@ import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Todo from './components/pages/Todo';
 import registerServiceWorker from './registerServiceWorker';
-
 import { BrowserRouter, Route } from 'react-router-dom';
+
+import Config from './config/firebase-config';
+import * as firebase from 'firebase';
+
+firebase.initializeApp(Config);
 
 const routes = (
     <BrowserRouter>
