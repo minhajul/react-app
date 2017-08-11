@@ -3,59 +3,60 @@ import Header from "../partials/Header";
 import TodoList from "../partials/TodoList";
 import {TodoForm} from "../partials/TodoForm";
 import Footer from "../partials/Footer";
+import * as firebase from 'firebase';
 
 class Todo extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            item : '',
+            todos : [],
+            loading : true
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {
-            items : [
-                {
-                    id: 1,
-                    name : 'PHP',
-                    isComplete : true
-                },
-                {
-                    id: 2,
-                    name : 'Laravel',
-                    isComplete : false
-                },
-                {
-                    id: 3,
-                    name : 'Javascript',
-                    isComplete : true
-                },
-                {
-                    id: 4,
-                    name : 'Python',
-                    isComplete : false
-                },
-            ],
-            text : ''
-        }
+    }
+
+    componentWillMount() {
+        let todoRef = firebase.database().ref('todos');
+        let _this = this;
+        todoRef.on('child_added', snapshot => {
+            let todo = { name: snapshot.val().name, id: snapshot.key };
+            _this.setState({
+                todos: [todo].concat(_this.state.todos),
+                loading: false
+            });
+        });
     }
 
     handleChange(event){
         this.setState({
-            text : event.target.value
+            item : event.target.value
         });
     }
 
     handleSubmit(event){
         event.preventDefault();
-        let newItem = {
-            name : this.state.text,
-            id : Date.now()
-        };
+
+        const todoRef = firebase.database().ref('todos');
+
+        todoRef.push({
+            name : this.state.item,
+        });
 
         this.setState({
-            items : this.state.items.concat(newItem),
-            text : ''
+            item : '',
         })
     }
 
     render() {
+        if (this.state.loading){
+            return(
+                <div className="container">
+                    <h2>Loading......</h2>
+                </div>
+            )
+        }
         return (
             <div className="container">
                 <Header/>
@@ -63,9 +64,13 @@ class Todo extends Component {
                     <div className="todo-list">
                         <h3>TODO LIST</h3>
 
-                        <TodoList items={this.state.items}/>
+                        <TodoList todos={this.state.todos}/>
 
-                        <TodoForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} list={ this.state.text }/>
+                        <TodoForm
+                            handleSubmit={this.handleSubmit}
+                            handleChange={this.handleChange}
+                            item={this.state.item}
+                        />
 
                     </div>
                 </div>

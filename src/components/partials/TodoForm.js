@@ -1,11 +1,10 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
 export const TodoForm = (props) => (
     <form onSubmit={props.handleSubmit}>
         <div className="form-group">
-            <input className="form-control" onChange={props.handleChange} value={props.list} required/>
+            <input className="form-control" onChange={props.handleChange} value={props.item} required/>
             <br/>
             <button className="btn btn-primary">Add</button>
         </div>
@@ -15,5 +14,5 @@ export const TodoForm = (props) => (
 
 TodoForm.propTypes = {
     handleSubmit : PropTypes.func,
-    list : PropTypes.string
+    item : PropTypes.string
 };

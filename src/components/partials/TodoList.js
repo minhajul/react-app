@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class TodoList extends Component {
     render() {
         return (
             <ul className="todo-list">
-                {this.props.items.map(item => (
-                    <li key={item.id}>
-                        <input className="item" key={item.id} type="checkbox" name="text" defaultChecked={item.isComplete} />{item.name}
+                {this.props.todos.map(todo => (
+                    <li key={todo.id}>
+                        <input className="item" key={todo.id} type="checkbox" name="text"/>{todo.name}
                     </li>
                 ))}
             </ul>
