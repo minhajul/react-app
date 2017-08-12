@@ -6,7 +6,7 @@ class TodoList extends Component {
             <ul className="todo-list">
                 {this.props.todos.map(todo => (
                     <li key={todo.id}>
-                        <input className="item" key={todo.id} type="checkbox" name="text"/>{todo.name}
+                        <input className="item" key={todo.id} type="checkbox" defaultChecked={todo.is_complete} name="text"/>{todo.name}
                     </li>
                 ))}
             </ul>

@@ -21,7 +21,11 @@ class Todo extends Component {
         let todoRef = firebase.database().ref('todos');
         let _this = this;
         todoRef.on('child_added', snapshot => {
-            let todo = { name: snapshot.val().name, id: snapshot.key };
+            let todo = {
+                id: snapshot.key,
+                name: snapshot.val().name,
+                is_complete: snapshot.val().is_complete,
+            };
             _this.setState({
                 todos: [todo].concat(_this.state.todos),
                 loading: false
@@ -37,13 +41,11 @@ class Todo extends Component {
 
     handleSubmit(event){
         event.preventDefault();
-
         const todoRef = firebase.database().ref('todos');
-
         todoRef.push({
             name : this.state.item,
+            is_complete : true
         });
-
         this.setState({
             item : '',
         })
