@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import * as firebase from 'firebase';
 
 class TodoList extends Component {
@@ -16,21 +17,36 @@ class TodoList extends Component {
     }
 
     render() {
+        if (this.props.loading){
+            return(
+                <div className="">
+                    <h3>Loading......</h3>
+                </div>
+            )
+        }
         return (
-            <ul className="todo-list">
-                {this.props.todos.map(todo => (
-                    <li key={todo.id}>
-                        <input
-                            className="item"
-                            name="text"
-                            type="checkbox"
-                            onClick={this.handleIsComplete.bind(this, todo.id)} key={todo.id}
-                            defaultChecked={todo.is_complete} />{todo.name}
-                    </li>
-                ))}
-            </ul>
+            <div>
+                <h3>TODO LIST</h3>
+                <ul className="todo-list">
+                    {this.props.todos.map(todo => (
+                        <li key={todo.id}>
+                            <input
+                                className="item"
+                                name="text"
+                                type="checkbox"
+                                onClick={this.handleIsComplete.bind(this, todo.id)} key={todo.id}
+                                defaultChecked={todo.is_complete} />{todo.name}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         );
     }
 }
+
+TodoList.propTypes = {
+   todos: PropTypes.array,
+   loading: PropTypes.bool,
+};
 
 export default TodoList;

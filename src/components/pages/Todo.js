@@ -53,21 +53,14 @@ class Todo extends Component {
 
 
     render() {
-        if (this.state.loading){
-            return(
-                <div className="container">
-                    <h2>Loading......</h2>
-                </div>
-            )
-        }
         return (
             <div className="container">
                 <Header/>
                 <div className="col-md-12">
                     <div className="todo-list">
-                        <h3>TODO LIST</h3>
 
                         <TodoList
+                            loading={this.state.loading}
                             todos={this.state.todos}
                         />
 
