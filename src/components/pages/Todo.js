@@ -51,6 +51,7 @@ class Todo extends Component {
         })
     }
 
+
     render() {
         if (this.state.loading){
             return(
@@ -66,7 +67,9 @@ class Todo extends Component {
                     <div className="todo-list">
                         <h3>TODO LIST</h3>
 
-                        <TodoList todos={this.state.todos}/>
+                        <TodoList
+                            todos={this.state.todos}
+                        />
 
                         <TodoForm
                             handleSubmit={this.handleSubmit}

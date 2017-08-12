@@ -1,12 +1,31 @@
 import React, {Component} from 'react';
+import * as firebase from 'firebase';
 
 class TodoList extends Component {
+    handleIsComplete(key){
+        const singleTodo = firebase.database().ref('todos/' + key);
+        let [name, is_complete] = ['', false];
+        singleTodo.on('value', snapshot => {
+            name = snapshot.val().name;
+            is_complete = snapshot.val().is_complete !== true;
+        });
+        singleTodo.set({
+            name: name,
+            is_complete: is_complete
+        })
+    }
+
     render() {
         return (
             <ul className="todo-list">
                 {this.props.todos.map(todo => (
                     <li key={todo.id}>
-                        <input className="item" key={todo.id} type="checkbox" defaultChecked={todo.is_complete} name="text"/>{todo.name}
+                        <input
+                            className="item"
+                            name="text"
+                            type="checkbox"
+                            onClick={this.handleIsComplete.bind(this, todo.id)} key={todo.id}
+                            defaultChecked={todo.is_complete} />{todo.name}
                     </li>
                 ))}
             </ul>
