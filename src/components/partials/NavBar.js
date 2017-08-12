@@ -10,6 +10,7 @@ class NavBar extends Component{
                     <li role="presentation"><NavLink activeClassName="active" to="/about">ABOUT</NavLink></li>
                     <li role="presentation"><NavLink activeClassName="active" to="/contact">CONTACT</NavLink></li>
                     <li role="presentation"><NavLink activeClassName="active" to="/todo">TODO</NavLink></li>
+                    <li role="presentation"><NavLink activeClassName="active" to="/login">LOGIN</NavLink></li>
                 </ul>
             </nav>
         )

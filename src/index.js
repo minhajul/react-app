@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/partials/App';
 import About from './components/pages/About';
 import Contact from './components/pages/Contact';
+import Login from './components/pages/Login';
 import Todo from './components/pages/Todo';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -19,6 +20,7 @@ const routes = (
             <Route path="/about" component={About}/>
             <Route path="/contact" component={Contact}/>
             <Route path="/todo" component={Todo}/>
+            <Route path="/login" component={Login}/>
         </div>
     </BrowserRouter>
 );

@@ -30,13 +30,6 @@ class App extends Component {
     }
 
     render() {
-        if (this.state.loading){
-            return(
-                <div className="container">
-                    <h2>Loading......</h2>
-                </div>
-            )
-        }
         return (
             <div className="container">
                 <Header/>
