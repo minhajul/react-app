@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SinglePost extends Component {
     render() {
@@ -11,4 +12,9 @@ class SinglePost extends Component {
     }
 }
 
+SinglePost.propTypes = {
+     post : PropTypes.object
+};
+
 export default SinglePost;
+
