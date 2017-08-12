@@ -9,7 +9,6 @@ class App extends Component {
     
     constructor(){
         super();
-
         this.state = {
             posts : [],
             loading : true
@@ -18,15 +17,12 @@ class App extends Component {
 
     componentWillMount() {
         let postsRef = firebase.database().ref('posts');
-
-        let _this = this;
-
-        postsRef.on('value', function(snapshot) {
-            _this.setState({
+        postsRef.on('value', snapshot => {
+            this.setState({
                 posts: snapshot.val(),
                 loading: false
             });
-        });
+        }).bind(this);
     }
 
     render() {
@@ -37,7 +33,7 @@ class App extends Component {
                     <Content/>
                 </div>
                 <div className="col-md-12">
-                    <Blog posts={this.state.posts}/>
+                    <Blog loading={this.state.loading} posts={this.state.posts}/>
                 </div>
                 <div className="col-md-12">
                     <Footer/>
