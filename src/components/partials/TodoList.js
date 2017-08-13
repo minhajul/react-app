@@ -19,9 +19,7 @@ class TodoList extends Component {
     render() {
         if (this.props.loading){
             return(
-                <div className="">
-                    <h3>Loading......</h3>
-                </div>
+                <h3>Loading......</h3>
             )
         }
         return (
@@ -34,7 +32,8 @@ class TodoList extends Component {
                                 className="item"
                                 name="text"
                                 type="checkbox"
-                                onClick={this.handleIsComplete.bind(this, todo.id)} key={todo.id}
+                                onClick={this.handleIsComplete.bind(this, todo.id)}
+                                key={todo.id}
                                 defaultChecked={todo.is_complete} />{todo.name}
                         </li>
                     ))}
@@ -45,8 +44,8 @@ class TodoList extends Component {
 }
 
 TodoList.propTypes = {
-   todos: PropTypes.array,
-   loading: PropTypes.bool,
+    todos: PropTypes.array,
+    loading: PropTypes.bool
 };
 
 export default TodoList;

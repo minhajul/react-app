@@ -19,24 +19,25 @@ class Todo extends Component {
 
     componentWillMount() {
         let todoRef = firebase.database().ref('todos');
-        let _this = this;
         todoRef.on('child_added', snapshot => {
             let todo = {
                 id: snapshot.key,
                 name: snapshot.val().name,
                 is_complete: snapshot.val().is_complete,
             };
-            _this.setState({
-                todos: [todo].concat(_this.state.todos),
+            this.setState({
+                todos: [todo].concat(this.state.todos),
                 loading: false
             });
-        });
+        }).bind(this);
     }
 
     handleChange(event){
         this.setState({
             item : event.target.value
         });
+
+        console.log('onsubmit');
     }
 
     handleSubmit(event){
@@ -50,7 +51,6 @@ class Todo extends Component {
             item : '',
         })
     }
-
 
     render() {
         return (
