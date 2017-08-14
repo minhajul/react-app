@@ -29,6 +29,7 @@ class Todo extends Component {
                 todos: [todo].concat(this.state.todos),
                 loading: false
             });
+            // console.log(this.state.todos);
         }).bind(this);
     }
 
