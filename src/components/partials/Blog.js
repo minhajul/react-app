@@ -15,7 +15,7 @@ class Blog extends Component{
             <div className="col-md-12">
                 <div className="row marketing">
                     {this.props.posts.map(post => (
-                        <SinglePost key={post.title} post={post} />
+                        <SinglePost key={post.id} post={post} />
                     ))}
                 </div>
             </div>

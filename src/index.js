@@ -16,11 +16,11 @@ firebase.initializeApp(Config);
 const routes = (
     <BrowserRouter>
         <div>
-            <Route exact path="/" component={Home}/>
             <Switch>
-                <Route exact path="/about" component={About}/>
-                <Route path="/about/:id" component={Details}/>
+                <Route exact path="/" component={Home}/>
+                <Route path="/blog/:id" component={Details}/>
             </Switch>
+            <Route exact path="/about" component={About}/>
             <Route path="/contact" component={Contact}/>
             <Route path="/todo" component={Todo}/>
             <Route path="/login" component={Login}/>

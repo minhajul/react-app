@@ -14,15 +14,13 @@ class Details extends Component {
     }
 
     componentWillMount() {
-        let singlePost = firebase.database().ref('posts').child('0');
+        let singlePost = firebase.database().ref('posts').child(`${this.props.match.params.id}`);
         singlePost.on('value', snap => {
             this.setState({
                 post: snap.val(),
                 loading: false
             })
         });
-
-        console.log(this.state.post);
     }
 
     render() {
@@ -52,6 +50,5 @@ class Details extends Component {
         )
     }
 };
-
 
 export default Details;

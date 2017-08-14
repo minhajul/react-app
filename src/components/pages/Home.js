@@ -15,9 +15,14 @@ class Home extends Component {
 
     componentWillMount() {
         let postsRef = firebase.database().ref('posts');
-        postsRef.on('value', snapshot => {
+        postsRef.on('child_added', snap => {
+            let post = {
+                id: snap.key,
+                title: snap.val().title,
+                description: snap.val().description,
+            };
             this.setState({
-                posts: snapshot.val(),
+                posts: [post].concat(this.state.posts),
                 loading: false
             });
         }).bind(this);
