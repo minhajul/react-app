@@ -15,7 +15,7 @@ class Home extends Component {
 
     componentWillMount() {
         let postsRef = firebase.database().ref('posts');
-        postsRef.on('child_added', snap => {
+        postsRef.orderByChild('key').on('child_added', snap => {
             let post = {
                 id: snap.key,
                 title: snap.val().title,
