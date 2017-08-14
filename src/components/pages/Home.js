@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import Header from "./Header";
-import Content from "./Content";
-import Blog from "./Blog";
-import Footer from "./Footer";
+import Header from "../partials/Header";
+import Blog from "../partials/Blog";
+import Footer from "../partials/Footer";
 import * as firebase from 'firebase';
 
-class App extends Component {
-    
+class Home extends Component {
     constructor(){
         super();
         this.state = {
@@ -29,18 +27,11 @@ class App extends Component {
         return (
             <div className="container">
                 <Header/>
-                <div className="col-md-12">
-                    <Content/>
-                </div>
-                <div className="col-md-12">
-                    <Blog loading={this.state.loading} posts={this.state.posts}/>
-                </div>
-                <div className="col-md-12">
-                    <Footer/>
-                </div>
+                <Blog loading={this.state.loading} posts={this.state.posts}/>
+                <Footer/>
             </div>
         );
     }
 }
 
-export default App;
+export default Home;
