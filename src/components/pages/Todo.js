@@ -29,7 +29,6 @@ class Todo extends Component {
                 todos: [todo].concat(this.state.todos),
                 loading: false
             });
-            // console.log(this.state.todos);
         }).bind(this);
     }
 
@@ -37,8 +36,6 @@ class Todo extends Component {
         this.setState({
             item : event.target.value
         });
-
-        console.log('onsubmit');
     }
 
     handleSubmit(event){
