@@ -5,7 +5,6 @@ import {TodoForm} from "../partials/TodoForm";
 import Footer from "../partials/Footer";
 import * as firebase from 'firebase';
 
-
 class Todo extends Component {
     constructor(props){
         super(props);

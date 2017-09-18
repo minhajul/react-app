@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Config from './config/firebase-config';
 import * as firebase from 'firebase';
 import Details from "./components/pages/Details";
+import TestTodo from "./components/pages/TestTodo";
 
 firebase.initializeApp(Config);
 
@@ -24,6 +25,7 @@ const routes = (
             <Route path="/contact" component={Contact}/>
             <Route path="/todo" component={Todo}/>
             <Route path="/login" component={Login}/>
+            <Route path="/test" component={TestTodo}/>
         </div>
     </BrowserRouter>
 );
