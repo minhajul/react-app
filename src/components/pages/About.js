@@ -10,10 +10,12 @@ class About extends Component {
             myProfile: {}
         };
     }
+    
     async fetchGithubProfile(){
         const response = await fetch('https://api.github.com/users/minhajCSE');
         return await response.json();
     }
+
     componentDidMount(){
         let profile = JSON.parse(localStorage.getItem('profile'));
         if (profile !== null){
