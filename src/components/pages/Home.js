@@ -37,7 +37,7 @@ class Home extends Component {
     }
 
     componentDidMount(){
-        const blogs = [];
+        const posts = [];
         const postsRef = firebase.database().ref('posts');
         postsRef.on('child_added', snap => {
             let post = {
@@ -47,10 +47,10 @@ class Home extends Component {
                 posted: snap.val().posted
             };
 
-            blogs.push(post);
+            posts.push(post);
 
             this.setState({
-                posts: blogs,
+                posts: posts,
                 loading: false
             });
         });
