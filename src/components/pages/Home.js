@@ -8,31 +8,62 @@ class Home extends Component {
     constructor(){
         super();
         this.state = {
-            posts : [],
+            posts : []
+            ,
             loading : true
-        }
+        };
     }
 
     componentWillMount() {
-        let postsRef = firebase.database().ref('posts');
+        const posts = [];
+        const postsRef = firebase.database().ref('posts');
+
+        postsRef.once('value', snap => {
+            snap.forEach(value => {
+                let post = {
+                    id: value.key,
+                    title: value.val().title,
+                    description: value.val().description,
+                    posted: value.val().posted
+                };
+                posts.push(post)
+            });
+
+            this.setState({
+                posts: posts,
+                loading: false
+            });
+        });
+    }
+
+    componentDidMount(){
+        const blogs = [];
+        const postsRef = firebase.database().ref('posts');
         postsRef.on('child_added', snap => {
             let post = {
                 id: snap.key,
                 title: snap.val().title,
                 description: snap.val().description,
+                posted: snap.val().posted
             };
+
+            blogs.push(post);
+
             this.setState({
-                posts: [post].concat(this.state.posts),
+                posts: blogs,
                 loading: false
             });
-        }).bind(this);
+        });
     }
 
     render() {
         return (
             <div className="container">
                 <Header/>
-                <Blog loading={this.state.loading} posts={this.state.posts}/>
+                <Blog
+                    loading={this.state.loading}
+                    posts={this.state.posts}
+                />
                 <Footer/>
             </div>
         );

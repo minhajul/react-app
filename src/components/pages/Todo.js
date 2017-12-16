@@ -10,15 +10,18 @@ class Todo extends Component {
         super(props);
         this.state = {
             item : '',
-            todos : [],
             loading : true
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
     componentWillMount() {
+        this.setState({
+            todos: this.props.todos,
+            loading: false
+        });
+
         let todoRef = firebase.database().ref('todos');
         todoRef.on('child_added', snapshot => {
             let todo = {

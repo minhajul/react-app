@@ -16,7 +16,8 @@ const initState = {
             name: 'Javascript',
             is_complete: false
         }
-    ]
+    ],
+    currentTodo: ''
 };
 
 export default (state = initState, action) => {
@@ -24,10 +25,10 @@ export default (state = initState, action) => {
         case 'ADD_TODO':
            return {
                ...state,
-               todos: state.todos.concat(action.payload)
+               todos: state.todos.push(action.payload)
            };
-        case 'DECREMENT':
-           return state - 1;
+        case 'UPDATE_CURRENT':
+           return {...state, currentTodo: action.payload};
         default:
            return {...state};
     }

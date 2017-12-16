@@ -3,6 +3,12 @@ import SinglePost from "./SinglePost";
 import PropTypes from 'prop-types';
 
 class Blog extends Component{
+    constructor(props){
+        super();
+
+        console.log(props.posts);
+    }
+
     render(){
         if(this.props.loading){
             return (
