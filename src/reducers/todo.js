@@ -17,6 +17,7 @@ const initState = {
             is_complete: false
         }
     ],
+
     currentTodo: ''
 };
 
