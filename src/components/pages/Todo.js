@@ -5,6 +5,11 @@ import {TodoForm} from "../partials/TodoForm";
 import Footer from "../partials/Footer";
 import * as firebase from 'firebase';
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as actionCreators from '../../actions/actionCreator';
+
+
 class Todo extends Component {
     constructor(props){
         super(props);
@@ -69,6 +74,8 @@ class Todo extends Component {
                             item={this.state.item}
                         />
 
+                        <h2>{JSON.stringify(this.props.test)}</h2>
+
                     </div>
                 </div>
                 <div className="col-md-12">
@@ -79,5 +86,18 @@ class Todo extends Component {
     }
 }
 
-export default Todo;
+
+function mapStateToProps(state) {
+    return {
+        test: state.todos
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(actionCreators, dispatch)
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);
 
