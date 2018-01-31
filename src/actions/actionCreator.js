@@ -1,7 +1,7 @@
 
-export function addTodo(index) {
+export function addTodo(todo) {
     return {
         type: 'ADD_TODO',
-        index
+        todo
     }
 }

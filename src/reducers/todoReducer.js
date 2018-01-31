@@ -1,6 +1,5 @@
 
-
-const defaultTodo = [
+const defaultTodos = [
     {
         id: 0,
         name: 'PHP',
@@ -18,8 +17,7 @@ const defaultTodo = [
     }
 ];
 
-
-export default function todos(state = defaultTodo, action){
+export default function todos(state = defaultTodos, action){
     switch (action.type){
         case 'ADD_TODO':
             return [...state, Object.assign({}, action.todo)];

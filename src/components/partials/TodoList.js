@@ -17,11 +17,6 @@ class TodoList extends Component {
     }
 
     render() {
-        if (this.props.loading){
-            return(
-                <h3>Loading......</h3>
-            )
-        }
         return (
             <div>
                 <h3>TODO LIST</h3>

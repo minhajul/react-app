@@ -5,12 +5,12 @@ import Contact from './components/pages/Contact'
 import Login from './components/pages/Login'
 import Todo from './components/pages/Todo'
 import { BrowserRouter, Route } from 'react-router-dom'
-import Config from './config/firebase-config'
-import * as firebase from 'firebase'
 import Details from "./components/pages/Details"
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 import Home from "./components/pages/Home";
+import Config from "./config/firebase-config";
+import * as firebase from "firebase";
 
 firebase.initializeApp(Config);
 
@@ -21,11 +21,11 @@ const routes = (
         <BrowserRouter>
             <div>
                 <Route exact path="/" component={Home}/>
-                <Route path="/blog/:id" component={Details}/>
+                <Route exact path="/blog/:id" component={Details}/>
                 <Route exact path="/about" component={About}/>
-                <Route path="/contact" component={Contact}/>
-                <Route path="/todo" component={Todo}/>
-                <Route path="/login" component={Login}/>
+                <Route exact path="/contact" component={Contact}/>
+                <Route exact path="/todo" component={Todo}/>
+                <Route exact path="/login" component={Login}/>
             </div>
         </BrowserRouter>
     </Provider>
