@@ -46,7 +46,7 @@ class Todo extends Component {
         let todo = {
             id: Math.random(),
             name: this.state.item,
-            is_complete : true
+            is_complete : false
         };
 
         this.props.actions.addTodo(
@@ -54,7 +54,7 @@ class Todo extends Component {
         );
 
         this.setState({
-            item : '',
+            item : ''
         })
     }
 

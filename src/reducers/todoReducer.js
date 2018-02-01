@@ -12,7 +12,7 @@ const defaultTodos = [
     },
     {
         id: 2,
-        name: 'Javascript',
+        name: 'HTML',
         is_complete: false
     }
 ];
